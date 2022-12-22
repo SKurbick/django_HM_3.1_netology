@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1><a href="/catalog">Каталог</a></h1>
+    </div>
+
+    <div class="sort-block">
+        {# Здесь должен быть раздел с сортировкой #}
+        <h6> Сортировать по :<a href="?sort=name">имени</a> | <a href="?sort=min_price">начиная с дешевых</a> | <a
+                href="?sort=max_price">начиная с дорогих</a></h6>
+    </div>
+
+    <div class="content">
+        <div class="row">
+
+            {% for phone in phones %}
+
+            <div class="col-4">
+
+                <h3><a href="{{ phone.slug }}">{{ phone.name }}</a></h3>
+                <p style="font-size: 18px">
+                    <strong>Стоимость: {{ phone.price }} &#8381 </strong>
+                    <br><img src={{ phone.image }}
+                             width="284"
+                             height="540"
+                />
+                </p></div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}
